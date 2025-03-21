@@ -4,14 +4,8 @@
   gather_facts: no
   connection: network_cli
 
-  tasks:
-    - name: Show version
-      cisco.ios.ios_command:
-        commands:
-          - show ip int br
-      register: output
 
-    - name: Display output
-      debug:
-        var: output.stdout_lines
+  tasks:
+    - name: Ping test
+      ansible.builtin.ping:
 

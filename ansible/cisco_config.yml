@@ -8,10 +8,9 @@
 
   tasks:
     - name: Configuring Loopback address on R1
-      cisco.ios.ios_config:
-        lines:
-          - interface lo0
-          - ip address 10.1.1.1 255.255.255.255
+      ios_command:
+        commands:
+          - show ip in brief
 
 # Play 2 Configuring R2
 

@@ -1,15 +1,8 @@
-- name: Initial Playbook
+---
+- name: Test AWX EE Compatibility
   hosts: all
   gather_facts: no
-  connection: network_cli
+
   tasks:
-    - name: run show ip interface brief
-      cisco.ios.ios_command:
-        commands:
-          - show ip int br
-      register: sh_ip_int_br_result
-
-    - name: Debug registered var
-      debug:
-        var: sh_ip_int_br_result.stdout_lines
-
+    - name: Ping test
+      ansible.builtin.ping:

@@ -8,7 +8,7 @@
     - name: Show version
       cisco.ios.ios_command:
         commands:
-          - show version
+          - show ip int br
       register: output
 
     - name: Display output

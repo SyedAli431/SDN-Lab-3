@@ -3,14 +3,14 @@
 # Play 1 Configuring R1 
 
 - name: Configuring R1
-  hosts: all
+  hosts: Cisco1
   gather_facts: false
+  connection: network_cli
+
 
   tasks:
     - name: Configuring Loopback address on R1
-      ansible.builtin.include_role:
-        name: cisco.ios.ios_config
-      vars:
+      ios_config:
         lines:
           - interface lo0
           - ip address 10.1.1.1 255.255.255.255
@@ -21,28 +21,25 @@
 - name: Configuring R2
   hosts: Cisco2
   gather_facts: false
+  connection: network_cli
 
   tasks:
     - name: Configuring Loopback address on R2
-      ansible.builtin.include_role:
-        name: cisco.ios.ios_config
-      vars:
+      ios_config:
         lines:
           - interface lo0
           - ip address 10.2.2.2 255.255.255.255
-
 
 # Play 3 Configuring R3
 
 - name: Configuring R3
   hosts: Cisco3
   gather_facts: false
+  connection: network_cli
 
   tasks:
     - name: Configuring Loopback address on R3
-      ansible.builtin.include_role:
-        name: cisco.ios.ios_config
-      vars:
+      ios_config:
         lines:
           - interface lo0
           - ip address 10.3.3.3 255.255.255.255

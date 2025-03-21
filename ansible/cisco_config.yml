@@ -1,15 +1,48 @@
-- name: Initial Playbook
-  hosts: all
-  gather_facts: no
-  connection: network_cli
+---
+
+# Play 1 Configuring R1 
+
+- name: Configuring R1
+  hosts: Cisco1
+  gather_facts: false
+
   tasks:
-    - name: run show ip interface brief
-      ios_command:
-        commands:
-          - show ip int br
-      register: sh_ip_int_br_result
+    - name: Configuring Loopback address on R1
+      ansible.builtin.include_role:
+        name: cisco.ios.ios_config
+      vars:
+        lines:
+          - interface lo0
+          - ip address 10.1.1.1 255.255.255.255
 
-    - name: Debug registered var
-      debug:
-        var: sh_ip_int_br_result.stdout_lines
+# Play 2 Configuring R2
 
+
+- name: Configuring R2
+  hosts: Cisco2
+  gather_facts: false
+
+  tasks:
+    - name: Configuring Loopback address on R2
+      ansible.builtin.include_role:
+        name: cisco.ios.ios_config
+      vars:
+        lines:
+          - interface lo0
+          - ip address 10.2.2.2 255.255.255.255
+
+
+# Play 3 Configuring R3
+
+- name: Configuring R3
+  hosts: Cisco3
+  gather_facts: false
+
+  tasks:
+    - name: Configuring Loopback address on R3
+      ansible.builtin.include_role:
+        name: cisco.ios.ios_config
+      vars:
+        lines:
+          - interface lo0
+          - ip address 10.3.3.3 255.255.255.255

@@ -1,6 +1,6 @@
 ---
 - name: Configuring R1
-  hosts: Cisco1
+  hosts: all
   gather_facts: false
   connection: network_cli
   tasks:
@@ -11,7 +11,7 @@
           - "ip address 10.1.1.1 255.255.255.255"
 
 - name: Configuring R2
-  hosts: Cisco2
+  hosts: all
   gather_facts: false
   connection: network_cli
   tasks:
@@ -22,7 +22,7 @@
           - "ip address 10.2.2.2 255.255.255.255"
 
 - name: Configuring R3
-  hosts: Cisco3
+  hosts: all
   gather_facts: false
   connection: network_cli
   tasks:

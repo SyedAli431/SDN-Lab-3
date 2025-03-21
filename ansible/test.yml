@@ -1,8 +1,17 @@
 ---
-- name: Test AWX EE Compatibility
+- name: Test Network CLI Connection
   hosts: all
   gather_facts: no
+  connection: network_cli
 
   tasks:
-    - name: Ping test
-      ansible.builtin.ping:
+    - name: Show version
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: output
+
+    - name: Display output
+      debug:
+        var: output.stdout_lines
+

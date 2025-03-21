@@ -4,7 +4,7 @@
   connection: network_cli
   tasks:
     - name: run show ip interface brief
-      ios_command:
+      cisco.ios.ios_command:
         commands:
           - show ip int br
       register: sh_ip_int_br_result
@@ -12,3 +12,4 @@
     - name: Debug registered var
       debug:
         var: sh_ip_int_br_result.stdout_lines
+

@@ -8,7 +8,9 @@
 
   tasks:
     - name: Configuring Loopback address on R1
-      cisco.ios.ios_config:
+      ansible.builtin.include_role:
+        name: cisco.ios.ios_config
+      vars:
         lines:
           - interface lo0
           - ip address 10.1.1.1 255.255.255.255
@@ -22,10 +24,13 @@
 
   tasks:
     - name: Configuring Loopback address on R2
-      cisco.ios.ios_config:
+      ansible.builtin.include_role:
+        name: cisco.ios.ios_config
+      vars:
         lines:
           - interface lo0
           - ip address 10.2.2.2 255.255.255.255
+
 
 # Play 3 Configuring R3
 
@@ -35,7 +40,10 @@
 
   tasks:
     - name: Configuring Loopback address on R3
-      cisco.ios.ios_config:
+      ansible.builtin.include_role:
+        name: cisco.ios.ios_config
+      vars:
         lines:
           - interface lo0
           - ip address 10.3.3.3 255.255.255.255
+

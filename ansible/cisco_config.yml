@@ -3,7 +3,7 @@
 # Play 1 Configuring R1 
 
 - name: Configuring R1
-  hosts: Cisco1
+  hosts: all
   gather_facts: false
 
   tasks:

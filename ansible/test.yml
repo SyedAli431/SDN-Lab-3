@@ -4,7 +4,7 @@
   connection: network_cli
   tasks:
     - name: run show ip interface brief
-      cisco.ios.ios_command:
+      ios_command:
         commands:
           - show ip int br
       register: sh_ip_int_br_result
